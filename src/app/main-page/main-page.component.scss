@@ -45,3 +45,15 @@ h1 {
     }
 }
 
+.add-item-section {
+    display: flex;
+
+    //Horizontally and Vertically center the text
+    justify-content: center;
+    align-items: center;
+
+    .add-item-container {
+        width: 680px;
+    }
+}
+
