@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import { BudgetItem } from 'src/shared/models/budget-item.module';
 import { from } from 'rxjs';
 
-
 @Component({
   selector: 'app-add-item-form',
   templateUrl: './add-item-form.component.html',
@@ -11,12 +10,20 @@ import { from } from 'rxjs';
 })
 export class AddItemFormComponent implements OnInit {
 
-  @Input() item: BudgetItem = new BudgetItem('', null);
+  @Input() item: BudgetItem;
   @Output() formSubmit: EventEmitter<BudgetItem> = new EventEmitter<BudgetItem>();
+
+  isNewItem: boolean;
 
   constructor() { }
 
   ngOnInit(): void {
+    if(this.item) {
+      this.isNewItem = false;
+    } else {
+      this.isNewItem = true;
+      this.item = new BudgetItem('', null);
+    }
   }
 
   onSubmit(form: NgForm) {
